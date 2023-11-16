@@ -6,7 +6,7 @@ pipeline{
     stages{
         stage('GetCode') {
             steps{
-                git 'https://github.com/manoj7894/sonar.git'   
+                git 'https://github.com/manoj7894/terraform.git'   
             }                                                  
         }
         stage('terraform init') {
