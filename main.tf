@@ -13,15 +13,11 @@ resource "null_resource" "build_and_push" {
 
 resource "kubernetes_deployment" "example" {
   metadata {
-    name = "example-deployment"
+    name = "example"
   }
 
   spec {
     replicas = 3
-
-    strategy{
-      type = "Recreate" 
-    }
 
     selector {
       match_labels = {
@@ -38,44 +34,50 @@ resource "kubernetes_deployment" "example" {
 
       spec {
         container {
-          image = "manoj3003/image05"  # Docker image to deploy
-          name  = "example-container"
-        }
-        ports {
-          containerPort = 8080  
-        }
-        resources {
-            requests {
-               cpu = "100m"
-               memory = "64Mi"
+          image = "nginx:latest"
+          name  = "nginx"
+
+          ports {
+            container_port = 80
+          }
+
+          resources {
+            limits = {
+              cpu    = "0.5"
+              memory = "512Mi"
             }
-            limits {
-               cpu = "100m"
-               memory = "256Mi" 
+            requests = {
+              cpu    = "0.25"
+              memory = "256Mi"
             }
+          }
         }
       }
     }
   }
 }
 
+
 resource "kubernetes_service" "example" {
   metadata {
-    name = "example-service"
+    name = "example"
   }
 
   spec {
     selector = {
       app = "example"
     }
-    ports {
-      protocol = "TCP"
-      port     = 80
+
+    port {
+      protocol    = "TCP"
+      port        = 80
       target_port = 80
     }
-    type = NodePort
+
+    type = "NodePort"
   }
 }
+
 
 resource "kubernetes_horizontal_pod_autoscaler" "example" {
   metadata {
