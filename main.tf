@@ -34,7 +34,7 @@ resource "kubernetes_deployment" "example" {
 
       spec {
         container {
-          image = "manoj3003/image5:latest"
+          image = "manoj3003/image05:latest"
           name  = "nginx"
 
           ports {
