@@ -91,8 +91,11 @@ resource "kubernetes_horizontal_pod_autoscaler" "example" {
     metric {
       type = "Resource"
       resource {
-        name                    = "cpu"
-        target_average_utilization = 50
+        name = "cpu"
+        target {
+          type               = "Utilization"
+          average_utilization = 50
+        }
       }
     }
 
@@ -103,4 +106,5 @@ resource "kubernetes_horizontal_pod_autoscaler" "example" {
     }
   }
 }
+
 
