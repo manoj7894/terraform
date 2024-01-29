@@ -38,7 +38,7 @@ resource "kubernetes_deployment" "example" {
 
       spec {
         container {
-          image = "your-docker-username/example-app:latest"  # Docker image to deploy
+          image = "manoj3003/image05"  # Docker image to deploy
           name  = "example-container"
         }
         ports {
