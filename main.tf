@@ -20,7 +20,7 @@ resource "kubernetes_deployment" "example" {
     replicas = 3
 
     strategy{
-      type = Recreate 
+      type = "Recreate" 
     }
 
     selector {
