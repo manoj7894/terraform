@@ -5,12 +5,12 @@ variable "region" {
 
 variable "access_key" {
   type    = string
-  default = "AKIAXUME7NWSVZHYBSX6"
+  default = "AKIA3FLDW6U6JAUBF7OU"
 }
 
 variable "secret_key" {
   type    = string
-  default = "Y/v4QCn1kQCN2JkrkKTRjDQxMKbVnC5OtwCtXHUc"
+  default = "EXVHh8T0gWIoWNfKQkHPo1GhLvW92vPqO9hAFTyG"
 }
 
 variable "ami" {
@@ -25,7 +25,7 @@ variable "instance_type" {
 
 variable "key_name" {
   type    = string
-  default = "pair1"
+  default = "supriya"
 }
 
 variable "availability_zone" {
