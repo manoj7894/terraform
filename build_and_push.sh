@@ -4,7 +4,7 @@
 DOCKER_USERNAME="manoj3003"
 
 # Set your Docker image name
-IMAGE_NAME="image1"
+IMAGE_NAME="image05"
 
 # Build the Docker image
 docker build -t $DOCKER_USERNAME/$IMAGE_NAME .
