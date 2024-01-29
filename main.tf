@@ -81,17 +81,26 @@ resource "kubernetes_service" "example" {
 
 resource "kubernetes_horizontal_pod_autoscaler" "example" {
   metadata {
-    name = "terraform-example"
+    name = "example"
   }
 
   spec {
-    max_replicas = 10
-    min_replicas = 8
-    targetCPUUtilizationPercentage = 50
+    max_replicas = 5
+    min_replicas = 1
+
+    metric {
+      type = "Resource"
+      resource {
+        name                    = "cpu"
+        target_average_utilization = 50
+      }
+    }
 
     scale_target_ref {
-      kind = "Deployment"
-      name = "MyApp"
+      api_version = "apps/v1"
+      kind        = "Deployment"
+      name        = kubernetes_deployment.example.metadata[0].name
     }
   }
 }
+
